@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+
+
+  <link rel="stylesheet" href="assets/css/style.css">
+   
+
+    <title>
+      Are you a psychic?
+    </title>
+
+
+  </head>
+  <body>
+    
+    <h1>The Psychic Game</h1>
+    <div id="game">
+      <p>What letter am I thinking of?</p>
+    </div>
+
+
+    <script type="text/javascript">
+    var letters = ["s", "d", "m"]  
+    var wins = 0;
+    var losses = 0;
+    var guesses = 9;
+    var yourGuessesSoFar= " ,";
+
+
+    document.onkeyup = function() {
+      var userguess = String.fromCharCode(event.keyCode).toLowerCase();
+    
+      var randomChoice = letters[Math.floor(Math.random()*letters.length)];   
+    if (userguess=='s' || userguess=='d' || userguess=='m') {      
+      if ((userguess=='s') && (randomChoice=='s')) {
+          wins++;
+          guesses= 9;
+      }
+      if ((userguess=='d') && (randomChoice=='d')) {
+          wins++;
+          guesses= 9;
+      } 
+      if ((userguess=='m') && (randomChoice=='m')) {
+          wins++;
+          guesses= 9;
+      }
+      if ((userguess=='s') && (randomChoice=='m')) {
+          wins++;
+          guesses= 9;
+      }
+      if ((userguess=='d') && (randomChoice=='m')) {
+          wins++;
+          guesses= 9;
+      } 
+      if ((userguess=='d') && (randomChoice=='s')) {
+          wins++;
+          guesses= 9;
+      } 
+      if ((userguess=='m') && (randomChoice=='s')) {
+          wins++;
+          guesses= 9;
+      }
+     if ((userguess=='s') && (randomChoice=='d')) {
+          wins++;
+          guesses= 9;
+      }
+     if ((userguess=='m') && (randomChoice=='d')) {
+          wins++;
+          guesses= 9;
+      }
+      }
+      else if (userguess!=randomChoice)
+      {
+        guesses--
+      }
+      if (guesses<= 0){
+        guesses= 9;
+        losses++;
+      }
+
+
+    var html = "<p>What letter am I thinking of?</p>" +
+    "<p>wins: " + wins + "</p>" +
+    "<p>losses: " + losses + "</p>" +
+    "<p>Guesses left: " + guesses + "</p>"
+    "<p>Your guesses so far: " + userguess + "</p>";
+    document.querySelector('#game').innerHTML = html;
+    }
+</script>
+
+      </body>
+</html>
